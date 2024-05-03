@@ -24,10 +24,8 @@ pipeline {
           }
           steps {
               withKubeConfig([credentialsId: 'kubeconfig']) {
-                  sh 'ls -l /opt'
-                  sh 'ls -l /opt/k8s'
-                  sh 'sed -i "s/{{tag}}/$tag_version/g" /opt/k8s/deployment.yaml'
-                  sh 'kubectl apply -f /opt/k8s/deployment.yaml'
+                  sh 'sed -i "s/{{tag}}/$tag_version/g" /opt/k8s/deployment.yml'
+                  sh 'kubectl apply -f /opt/k8s/deployment.yml'
               }
           }
       }
