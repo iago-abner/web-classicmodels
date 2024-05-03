@@ -3,10 +3,8 @@ pipeline {
     stages {
         stage('Build Docker image - frontend') {
             steps {
-                dir('frontend') {
-                    script {
-                        dockerfront = docker.build("iagoabner/frontend-classicmodels:${env.BUILD_ID}", "-f ./dockerfile .")
-                    }
+                script {
+                    dockerfront = docker.build("iagoabner/frontend-classicmodels:${env.BUILD_ID}", "-f ./dockerfile .")
                 }
             }
         }
